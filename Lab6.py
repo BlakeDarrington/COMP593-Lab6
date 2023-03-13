@@ -46,14 +46,14 @@ def installer_ok(installer_data, expected_sha256):
     else:
         print("The hash value of the download installer does not match the expected hash value. The installer file may be infected with malware.")
 
-    return True
+    return expected_sha256
 
 def save_installer(installer_data):
     temp_folder = os.getenv('TEMP')
     installer_path = os.path.join(temp_folder, "vlc-3.0.17.4-win64.exe")
     with open(installer_path, "wb") as file:
         file.write(file)
-    return
+    return installer_path
 
 def run_installer(installer_path):
     subprocess.run([installer_path, '/L=1033', '/S'])
